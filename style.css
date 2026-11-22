@@ -121,90 +121,90 @@
 }
 
 
-/* KEDAI AFNISA green-white minimalist banner v5 — brand name only */
-#cashier .afnisa-banner.afnisa-banner-minimal{
+/* KEDAI AFNISA dark emerald elegant luxury banner v6 — brand name only */
+#cashier .afnisa-banner.afnisa-banner-darklux {
   isolation:isolate;
   position:relative;
   display:flex;
-  align-items:center;
   justify-content:center;
+  align-items:center;
   overflow:hidden;
   width:100%;
-  min-height:104px;
+  min-height:112px;
   margin-bottom:14px;
-  padding:20px 26px;
-  border:1px solid #d5e9dc;
+  padding:20px 28px;
+  border:1px solid #365a49;
   border-radius:19px;
   background:
-    radial-gradient(ellipse 58% 160% at 100% 12%,#e5f4e9 0%,transparent 75%),
-    radial-gradient(ellipse 40% 150% at 0% 90%,#eaf7ef 0%,transparent 85%),
-    linear-gradient(115deg,#ffffff 0%,#f7fcf8 54%,#ffffff 100%);
-  box-shadow:0 7px 22px #15523a10,inset 0 1px 0 #fff;
+    radial-gradient(ellipse 45% 160% at 10% 0%,rgba(41,112,82,.38),transparent 82%),
+    radial-gradient(ellipse 38% 125% at 95% 95%,rgba(20,79,59,.45),transparent 83%),
+    linear-gradient(125deg,#071b18 0%,#102d25 48%,#061c18 100%);
+  box-shadow:0 12px 28px rgba(8,37,27,.22),inset 0 1px 0 rgba(255,255,255,.08);
 }
-#cashier .afnisa-banner.afnisa-banner-minimal::before{
+#cashier .afnisa-banner.afnisa-banner-darklux::before {
   content:"";
   position:absolute;
-  inset:0 auto 0 0;
-  width:5px;
-  border-radius:19px 0 0 19px;
-  background:linear-gradient(180deg,#25895c,#0f593f);
-  border:0;
+  inset:9px;
+  border:1px solid rgba(213,233,219,.20);
+  border-radius:12px;
+  background:transparent;
   box-shadow:none;
   pointer-events:none;
   z-index:0;
 }
-#cashier .afnisa-banner.afnisa-banner-minimal::after{
+#cashier .afnisa-banner.afnisa-banner-darklux::after {
   content:"";
   position:absolute;
-  width:220px;
-  height:220px;
+  width:240px;
+  height:240px;
   right:-118px;
-  top:-126px;
-  border:1px solid #2b82551b;
+  top:-131px;
+  border:1px solid rgba(163,205,176,.14);
   border-radius:50%;
+  box-shadow:0 0 0 35px rgba(143,189,161,.055),0 0 0 72px rgba(143,189,161,.025);
   background:transparent;
-  box-shadow:0 0 0 35px #2b825507,0 0 0 68px #2b825505;
   pointer-events:none;
   z-index:0;
 }
-#cashier .afnisa-banner-minimal .afnisa-banner-text{
+#cashier .afnisa-banner-darklux .afnisa-banner-text {
   position:relative;
   z-index:1;
   width:100%;
   text-align:center;
 }
-#cashier .afnisa-banner-minimal .afnisa-banner-text h2{
+#cashier .afnisa-banner-darklux .afnisa-banner-text h2 {
   margin:0;
-  color:#15543e;
-  font-size:clamp(25px,2.8vw,36px);
-  font-weight:850;
-  letter-spacing:.075em;
-  line-height:1.2;
-  text-transform:uppercase;
-  text-shadow:none;
-  -webkit-text-fill-color:#15543e;
+  color:#f8faf4;
   background:none;
+  -webkit-text-fill-color:#f8faf4;
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:clamp(28px,3.1vw,40px);
+  font-weight:700;
+  letter-spacing:.125em;
+  line-height:1.18;
+  text-transform:uppercase;
+  text-shadow:0 2px 15px rgba(0,0,0,.25);
   overflow-wrap:anywhere;
 }
-@media(max-width:760px){
-  #cashier .afnisa-banner.afnisa-banner-minimal{
-    min-height:83px;
-    padding:15px 18px;
+@media(max-width:760px) {
+  #cashier .afnisa-banner.afnisa-banner-darklux {
+    min-height:88px;
+    padding:17px 16px;
     margin-bottom:12px;
     border-radius:15px;
   }
-  #cashier .afnisa-banner.afnisa-banner-minimal::before{
-    width:4px;
-    border-radius:15px 0 0 15px;
+  #cashier .afnisa-banner.afnisa-banner-darklux::before {
+    inset:7px;
+    border-radius:10px;
   }
-  #cashier .afnisa-banner-minimal .afnisa-banner-text h2{
-    font-size:clamp(21px,5.5vw,29px);
-    letter-spacing:.05em;
+  #cashier .afnisa-banner-darklux .afnisa-banner-text h2 {
+    font-size:clamp(22px,5.8vw,31px);
+    letter-spacing:.075em;
   }
 }
-@media(max-width:360px){
-  #cashier .afnisa-banner-minimal .afnisa-banner-text h2{
-    font-size:20px;
-    letter-spacing:.025em;
+@media(max-width:370px) {
+  #cashier .afnisa-banner-darklux .afnisa-banner-text h2 {
+    font-size:21px;
+    letter-spacing:.045em;
   }
 }
