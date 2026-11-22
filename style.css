@@ -62,3 +62,60 @@
 @media(max-width:1280px){#cashier .cashier-grid{grid-template-columns:1fr}#cashier .afnisa-cart{position:static}}
 @media(max-width:760px){#cashier .afnisa-banner{padding:24px;min-height:155px}#cashier .afnisa-banner-icon{width:72px;height:72px;font-size:43px;margin:0}#cashier .product-grid{grid-template-columns:repeat(2,minmax(0,1fr))}#cashier .afnisa-panel-head{align-items:flex-start}}
 @media(max-width:480px){#cashier .afnisa-banner{padding:21px 18px;border-radius:17px}#cashier .afnisa-banner h2{font-size:23px}#cashier .afnisa-banner p{font-size:12px}#cashier .afnisa-banner-icon{display:none}#cashier .cashier-grid{gap:13px}#cashier .afnisa-panel-head{padding:20px 15px 15px}#cashier .afnisa-panel-head h3{font-size:17px}#cashier .afnisa-panel-head p{font-size:11px}#cashier .afnisa-count{font-size:10px;padding:6px 8px}#cashier .afnisa-search{margin:0 15px 15px}#cashier .product-grid{grid-template-columns:1fr;padding:0 15px 16px}#cashier .afnisa-cart-head,#cashier .afnisa-checkout-details{padding-left:15px;padding-right:15px}#cashier .afnisa-cart-list{padding-left:15px;padding-right:15px}}
+
+/* Kasir mobile checkout drawer v2: compact workspace and quick-access cart */
+#cashier .afnisa-banner{min-height:96px;padding:17px 24px;margin-bottom:14px;border-radius:17px;box-shadow:0 9px 22px #184b391c}
+#cashier .afnisa-banner h2{font-size:clamp(19px,1.7vw,23px);margin:5px 0 3px;line-height:1.23}
+#cashier .afnisa-banner p{font-size:12px}
+#cashier .afnisa-eyebrow{font-size:10px}
+#cashier .afnisa-banner-icon{width:62px;height:62px;font-size:36px;margin:0 5px;border-radius:15px;transform:rotate(-5deg)}
+#cashier .afnisa-panel-head{padding:18px 21px 13px}
+#cashier .afnisa-search{margin:0 21px 15px}
+#cashier .product-grid{grid-template-columns:repeat(auto-fill,minmax(177px,1fr));padding:0 21px 21px;gap:10px}
+#cashier .product-card{grid-template-columns:58px minmax(0,1fr);gap:3px 10px;padding:11px;border-radius:13px}
+#cashier .product-card:before{width:58px;height:58px;font-size:26px;border-radius:10px}
+#cashier .product-card>button{margin-top:7px;padding:9px 10px}
+#cashier .afnisa-cart-actions{display:flex;align-items:center;gap:6px}
+#cashier .afnisa-cart-close,
+#cashier .afnisa-mobile-cart-button,
+#cashier .afnisa-mobile-backdrop{display:none}
+@media (max-width:760px){
+  #cashier.cashier-premium{padding-bottom:calc(104px + env(safe-area-inset-bottom,0px))}
+  #cashier .afnisa-banner{min-height:0;margin-bottom:12px;padding:15px 18px;border-radius:14px}
+  #cashier .afnisa-banner h2{font-size:19px;line-height:1.25;margin:4px 0 2px}
+  #cashier .afnisa-banner p{font-size:11px}
+  #cashier .afnisa-banner-icon{width:48px;height:48px;font-size:28px;margin:0}
+  #cashier .afnisa-panel-head{padding:16px 15px 12px}
+  #cashier .afnisa-search{margin:0 15px 14px}
+  #cashier .product-grid{grid-template-columns:repeat(2,minmax(0,1fr));padding:0 15px 16px;gap:10px}
+  #cashier .product-card{grid-template-columns:1fr;grid-template-rows:56px auto auto auto auto;gap:4px;padding:10px}
+  #cashier .product-card:before{grid-column:1;grid-row:1;width:100%;height:56px;font-size:27px}
+  #cashier .product-card>b{grid-column:1;grid-row:2;font-size:12px;margin:4px 0 0}
+  #cashier .product-card>small{grid-column:1;grid-row:3}
+  #cashier .product-card>strong{grid-column:1;grid-row:4;font-size:15px;align-self:auto}
+  #cashier .product-card>button{grid-column:1;grid-row:5;margin-top:5px}
+  #cashier .afnisa-mobile-cart-button{position:fixed;z-index:60;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom,0px));width:calc(100% - 24px);display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:69px;padding:10px 16px;background:#176347;border:1px solid #2c7d56;border-radius:17px;color:white;box-shadow:0 12px 35px #113b2b4d;text-align:left}
+  #cashier .afnisa-mobile-cart-button:hover{background:#125239}
+  #cashier .afnisa-mobile-cart-left{display:flex;align-items:center;gap:11px;min-width:0}
+  #cashier .afnisa-mobile-cart-icon{display:grid;place-items:center;flex:none;width:42px;height:42px;border-radius:12px;background:#ffffff23;font-size:21px}
+  #cashier .afnisa-mobile-cart-left strong{display:block;font-size:13px;line-height:1.35}
+  #cashier .afnisa-mobile-cart-left small{display:block;color:#d7ecdf;font-size:11px;font-weight:500;margin-top:3px}
+  #cashier .afnisa-mobile-cart-total{white-space:nowrap;font-size:17px;font-weight:850;letter-spacing:-.02em}
+  #cashier .afnisa-mobile-backdrop{display:block;position:fixed;inset:0;z-index:70;background:#0d2116a8;visibility:hidden;opacity:0;pointer-events:none;transition:opacity .2s ease,visibility .2s ease}
+  #cashier .afnisa-cart{position:fixed;top:auto;bottom:0;left:0;right:0;z-index:71;max-height:min(86dvh,790px);width:100%;border-radius:22px 22px 0 0!important;overflow-y:auto;overscroll-behavior:contain;box-shadow:0 -18px 46px #071e1840;transform:translateY(110%);opacity:0;visibility:hidden;transition:transform .22s ease,opacity .22s ease,visibility .22s ease;padding-bottom:env(safe-area-inset-bottom,0px)!important}
+  #cashier .afnisa-cart-head{position:sticky;top:0;z-index:2;background:#fff;padding-top:20px}
+  #cashier .afnisa-cart-list{max-height:34dvh;min-height:82px}
+  #cashier .afnisa-cart-close{display:inline-flex;align-items:center;justify-content:center;flex:none;width:35px;height:35px;padding:0;border-radius:10px;background:#eef4ef;color:#3e664c;font-size:16px}
+  #cashier .afnisa-cart-close:hover{background:#dceade}
+  #cashier.mobile-cart-open .afnisa-cart{transform:translateY(0);opacity:1;visibility:visible}
+  #cashier.mobile-cart-open .afnisa-mobile-backdrop{visibility:visible;opacity:1;pointer-events:auto}
+  body.afnisa-cart-is-open{overflow:hidden}
+}
+@media (max-width:400px){
+ #cashier .afnisa-banner-icon{display:none}
+ #cashier .afnisa-banner h2{font-size:18px}
+ #cashier .afnisa-mobile-cart-total{font-size:15px}
+}
+@media (prefers-reduced-motion:reduce){
+ #cashier .afnisa-cart,#cashier .afnisa-mobile-backdrop{transition:none!important}
+}
