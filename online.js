@@ -5,7 +5,7 @@ const localTime=d=>new Date(d).toLocaleTimeString('id-ID',{hour:'2-digit',minute
 const SUPABASE_URL='https://hbewkflvocskgiypgjft.supabase.co';
 const SUPABASE_KEY='sb_publishable_6oQ0xG2TskM37fjf3mv_7A_9WX2dG-X';
 const db=window.supabase.createClient(SUPABASE_URL,SUPABASE_KEY);
-const USERS={icha:{email:'khususrandom404@gmail.com',display:'Icha'},cenos:{email:'aldisyahsihombing@gmail.com',display:'Cenos'}};
+const USERS={icha:{email:'khususrandom404@gmail.com',display:'Icha'}};
 let currentUser=null,products=[],transactions=[],transactionItems=[],stockLogs=[],suppliers=[],purchases=[],finances=[],customers=[],cart=[],syncing=false;
 let settings={id:null,storeName:'Kasir Toko',address:'',footer:'Terima kasih telah berbelanja'};
 function openModal(title,html){$('modalTitle').textContent=title;$('modalBody').innerHTML=html;$('modal').classList.remove('hidden')}
