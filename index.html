@@ -169,7 +169,8 @@
   <p class="hint">Password diubah langsung melalui Supabase. Masukkan password lama untuk verifikasi. Jangan bagikan password kepada siapa pun.</p>
   <form id="changePasswordForm" autocomplete="off">
    <label for="currentPassword">Password saat ini</label>
-   <input id="currentPassword" type="password" autocomplete="current-password" required>
+   <input id="currentPassword" type="password" autocomplete="off" placeholder="Ketik password lama secara manual" readonly required>
+   <p class="hint" style="margin:4px 0 10px">Kolom ini dikosongkan setiap kali Pengaturan dibuka. Klik kolom untuk memasukkan password lama.</p>
    <label for="newPassword">Password baru (minimal 12 karakter)</label>
    <input id="newPassword" type="password" autocomplete="new-password" minlength="12" required>
    <label for="confirmPassword">Ulangi password baru</label>
@@ -185,7 +186,7 @@
 
 <div id="modal" class="modal hidden"><div class="modalbox"><h3 id="modalTitle"></h3><div id="modalBody"></div><button id="closeModal" class="secondary">Batal</button></div></div>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="online.js?v=afnisa-mobile-2"></script>
+<script src="online.js?v=afnisa-password-3"></script>
 <script src="transaction-delete.js"></script>
 </body>
 </html>
