@@ -52,6 +52,27 @@ function renderReport(){let date=$('reportDate').value||localDate(),arr=transact
 $('reportDate').value=localDate();$('reportDate').onchange=renderReport;
 function renderSettings(){$('storeName').value=settings.storeName;$('storeAddress').value=settings.address;$('receiptFooter').value=settings.footer}
 $('saveSettings').onclick=async()=>{let payload={store_name:$('storeName').value.trim()||'Kasir Toko',address:$('storeAddress').value.trim(),receipt_footer:$('receiptFooter').value.trim(),updated_at:new Date().toISOString()},r=settings.id?await db.from('store_settings').update(payload).eq('id',settings.id):await db.from('store_settings').insert(payload);if(r.error)return fail(r.error);await loadData();alert('Pengaturan disimpan online.')};
+/* Prevent stale/browser-prefilled current passwords in the settings screen.
+   Browser password managers can still ignore autocomplete hints. */
+const afnisaCurrentPasswordField=$('currentPassword');
+function resetAfnisaPasswordEntry(){
+  $('changePasswordForm').reset();
+  afnisaCurrentPasswordField.value='';
+  afnisaCurrentPasswordField.readOnly=true;
+  $('changePasswordStatus').textContent='';
+}
+function unlockAfnisaPasswordEntry(){
+  if(!afnisaCurrentPasswordField.readOnly)return;
+  afnisaCurrentPasswordField.readOnly=false;
+  afnisaCurrentPasswordField.value='';
+}
+afnisaCurrentPasswordField.addEventListener('pointerdown',unlockAfnisaPasswordEntry);
+afnisaCurrentPasswordField.addEventListener('focus',unlockAfnisaPasswordEntry);
+document.querySelectorAll('#nav button').forEach(button=>{
+  button.addEventListener('click',resetAfnisaPasswordEntry);
+});
+window.addEventListener('pageshow',resetAfnisaPasswordEntry);
+resetAfnisaPasswordEntry();
 $('changePasswordForm').addEventListener('submit',async e=>{
  e.preventDefault();
  const form=e.currentTarget;
