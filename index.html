@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Kasir Toko</title>
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css?v=afnisa-pos-1">
 </head>
 <body>
 <div id="login" class="login">
@@ -58,20 +58,40 @@
   </div>
 </section>
 
-<section id="cashier" class="page">
+<section id="cashier" class="page cashier-premium">
+ <div class="afnisa-banner">
+  <div class="afnisa-banner-text">
+   <span class="afnisa-eyebrow">✦ KEDAI AFNISA · POINT OF SALE</span>
+   <h2>Belanja Lebih Mudah,<br>Pelayanan Lebih Cepat.</h2>
+   <p>Pilih produk, atur jumlah, kemudian selesaikan pembayaran dengan praktis.</p>
+  </div>
+  <div class="afnisa-banner-icon" aria-hidden="true">🧺</div>
+ </div>
  <div class="cashier-grid">
-  <article class="card">
-   <div class="cardhead"><h3>Kasir</h3><input id="cashierSearch" placeholder="Cari nama / barcode"></div>
+  <article class="card afnisa-products">
+   <div class="afnisa-panel-head">
+    <div><span class="afnisa-kicker">KATALOG PRODUK</span><h3>Pilih Produk</h3><p>Semua barang tersedia tanpa kategori.</p></div>
+    <span class="afnisa-count" id="cashierProductCount">0 barang</span>
+   </div>
+   <div class="afnisa-search"><span aria-hidden="true">⌕</span><input id="cashierSearch" type="search" placeholder="Cari nama barang atau barcode..." aria-label="Cari barang" autocomplete="off"></div>
    <div id="cashierProducts" class="product-grid"></div>
   </article>
-  <article class="card cartbox">
-   <div class="cardhead"><h3>Keranjang</h3><button id="clearCart" class="danger small">Kosongkan</button></div>
-   <div id="cart"></div>
-   <div class="summary"><span>Total</span><b id="cartTotal">Rp0</b></div>
-   <select id="paymentMethod"><option>Cash</option><option>QRIS</option><option>Transfer</option></select>
-   <input id="payAmount" type="number" placeholder="Uang bayar">
-   <div class="summary"><span>Kembalian</span><b id="change">Rp0</b></div>
-   <button id="checkout" class="primary wide">Selesaikan Transaksi</button>
+  <article class="card cartbox afnisa-cart">
+   <div class="afnisa-cart-head">
+    <div><span class="afnisa-kicker">PESANAN SAAT INI</span><h3>🛍️ Keranjang Belanja</h3><p id="cashierCartCount">0 item</p></div>
+    <button id="clearCart" class="afnisa-clear" type="button">Kosongkan</button>
+   </div>
+   <div id="cart" class="afnisa-cart-list"></div>
+   <div class="afnisa-checkout-details">
+    <div class="afnisa-total"><span>Total Pembayaran</span><b id="cartTotal">Rp0</b></div>
+    <label for="paymentMethod">Metode pembayaran</label>
+    <select id="paymentMethod"><option value="Cash">💵 Tunai</option><option value="QRIS">▦ QRIS</option><option value="Transfer">⇄ Transfer</option></select>
+    <label for="payAmount">Uang diterima</label>
+    <input id="payAmount" type="number" min="0" inputmode="numeric" placeholder="Masukkan nominal pembayaran">
+    <div class="afnisa-change"><span>Kembalian</span><b id="change">Rp0</b></div>
+    <button id="checkout" class="primary wide">✓ Selesaikan Transaksi</button>
+    <p class="afnisa-checkout-note">☁ Terhubung ke database Kasir Toko</p>
+   </div>
   </article>
  </div>
 </section>
@@ -163,7 +183,7 @@
 
 <div id="modal" class="modal hidden"><div class="modalbox"><h3 id="modalTitle"></h3><div id="modalBody"></div><button id="closeModal" class="secondary">Batal</button></div></div>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="online.js?v=nisa-20261123-2"></script>
+<script src="online.js?v=afnisa-pos-1"></script>
 <script src="transaction-delete.js"></script>
 </body>
 </html>
