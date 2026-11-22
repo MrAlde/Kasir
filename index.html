@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Kasir Toko</title>
-<link rel="stylesheet" href="style.css?v=afnisa-pos-1">
+<link rel="stylesheet" href="style.css?v=afnisa-mobile-2">
 </head>
 <body>
 <div id="login" class="login">
@@ -62,8 +62,8 @@
  <div class="afnisa-banner">
   <div class="afnisa-banner-text">
    <span class="afnisa-eyebrow">✦ KEDAI AFNISA · POINT OF SALE</span>
-   <h2>Belanja Lebih Mudah,<br>Pelayanan Lebih Cepat.</h2>
-   <p>Pilih produk, atur jumlah, kemudian selesaikan pembayaran dengan praktis.</p>
+   <h2>Kasir Cepat, Belanja Praktis.</h2>
+   <p>Pilih produk dan selesaikan transaksi lebih cepat.</p>
   </div>
   <div class="afnisa-banner-icon" aria-hidden="true">🧺</div>
  </div>
@@ -76,10 +76,10 @@
    <div class="afnisa-search"><span aria-hidden="true">⌕</span><input id="cashierSearch" type="search" placeholder="Cari nama barang atau barcode..." aria-label="Cari barang" autocomplete="off"></div>
    <div id="cashierProducts" class="product-grid"></div>
   </article>
-  <article class="card cartbox afnisa-cart">
+  <article class="card cartbox afnisa-cart" id="cashierCartPanel" aria-label="Keranjang belanja">
    <div class="afnisa-cart-head">
     <div><span class="afnisa-kicker">PESANAN SAAT INI</span><h3>🛍️ Keranjang Belanja</h3><p id="cashierCartCount">0 item</p></div>
-    <button id="clearCart" class="afnisa-clear" type="button">Kosongkan</button>
+    <div class="afnisa-cart-actions"><button id="clearCart" class="afnisa-clear" type="button">Kosongkan</button><button id="closeMobileCart" class="afnisa-cart-close" type="button" aria-label="Tutup keranjang">✕</button></div>
    </div>
    <div id="cart" class="afnisa-cart-list"></div>
    <div class="afnisa-checkout-details">
@@ -94,6 +94,8 @@
    </div>
   </article>
  </div>
+ <div id="mobileCartBackdrop" class="afnisa-mobile-backdrop" aria-hidden="true"></div>
+ <button id="openMobileCart" class="afnisa-mobile-cart-button" type="button" aria-controls="cashierCartPanel" aria-expanded="false"><span class="afnisa-mobile-cart-left"><span class="afnisa-mobile-cart-icon" aria-hidden="true">🛍️</span><span><strong>Lihat Keranjang</strong><small id="mobileCartItems">0 item</small></span></span><span class="afnisa-mobile-cart-total" id="mobileCartTotal">Rp0</span></button>
 </section>
 
 <section id="products" class="page">
@@ -183,7 +185,7 @@
 
 <div id="modal" class="modal hidden"><div class="modalbox"><h3 id="modalTitle"></h3><div id="modalBody"></div><button id="closeModal" class="secondary">Batal</button></div></div>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="online.js?v=afnisa-pos-1"></script>
+<script src="online.js?v=afnisa-mobile-2"></script>
 <script src="transaction-delete.js"></script>
 </body>
 </html>
