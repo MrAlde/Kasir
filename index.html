@@ -142,6 +142,20 @@
 
 <section id="settings" class="page">
  <article class="card"><h3>Pengaturan Toko</h3><label>Nama Toko</label><input id="storeName"><label>Alamat</label><input id="storeAddress"><label>Footer Struk</label><input id="receiptFooter"><button id="saveSettings">Simpan Pengaturan</button><p class="hint">ONLINE • Data disimpan di Supabase dan dapat digunakan dari beberapa PC.</p></article>
+ <article class="card" style="margin-top:18px">
+  <h3>Ganti Password Kasir</h3>
+  <p class="hint">Password diubah langsung melalui Supabase. Masukkan password lama untuk verifikasi. Jangan bagikan password kepada siapa pun.</p>
+  <form id="changePasswordForm" autocomplete="off">
+   <label for="currentPassword">Password saat ini</label>
+   <input id="currentPassword" type="password" autocomplete="current-password" required>
+   <label for="newPassword">Password baru (minimal 12 karakter)</label>
+   <input id="newPassword" type="password" autocomplete="new-password" minlength="12" required>
+   <label for="confirmPassword">Ulangi password baru</label>
+   <input id="confirmPassword" type="password" autocomplete="new-password" minlength="12" required>
+   <button id="changePasswordButton" type="submit">Ubah Password</button>
+   <p id="changePasswordStatus" class="hint" role="status" aria-live="polite"></p>
+  </form>
+ </article>
 </section>
 </main>
 </section>
