@@ -52,6 +52,43 @@ function renderReport(){let date=$('reportDate').value||localDate(),arr=transact
 $('reportDate').value=localDate();$('reportDate').onchange=renderReport;
 function renderSettings(){$('storeName').value=settings.storeName;$('storeAddress').value=settings.address;$('receiptFooter').value=settings.footer}
 $('saveSettings').onclick=async()=>{let payload={store_name:$('storeName').value.trim()||'Kasir Toko',address:$('storeAddress').value.trim(),receipt_footer:$('receiptFooter').value.trim(),updated_at:new Date().toISOString()},r=settings.id?await db.from('store_settings').update(payload).eq('id',settings.id):await db.from('store_settings').insert(payload);if(r.error)return fail(r.error);await loadData();alert('Pengaturan disimpan online.')};
+$('changePasswordForm').addEventListener('submit',async e=>{
+ e.preventDefault();
+ const form=e.currentTarget;
+ const status=$('changePasswordStatus');
+ const button=$('changePasswordButton');
+ const oldPassword=$('currentPassword').value;
+ const newPassword=$('newPassword').value;
+ const repeatPassword=$('confirmPassword').value;
+ status.textContent='';
+ if(!currentUser||currentUser.email.toLowerCase()!==USERS.nisa.email.toLowerCase()){
+  status.textContent='Sesi Nisa tidak ditemukan. Silakan login ulang.';
+  return;
+ }
+ if(newPassword.length<12){status.textContent='Gunakan password baru minimal 12 karakter.';return;}
+ if(newPassword!==repeatPassword){status.textContent='Konfirmasi password baru tidak cocok.';return;}
+ if(oldPassword===newPassword){status.textContent='Password baru harus berbeda dari password lama.';return;}
+ button.disabled=true;
+ button.textContent='Memperbarui password...';
+ try{
+  const {data:account,error:accountError}=await db.auth.getUser();
+  if(accountError||account.user?.email?.toLowerCase()!==USERS.nisa.email.toLowerCase())throw new Error('Sesi tidak valid. Silakan login ulang.');
+  const {error:verifyError}=await db.auth.signInWithPassword({email:USERS.nisa.email,password:oldPassword});
+  if(verifyError)throw new Error('Password saat ini salah. Silakan coba lagi.');
+  const {error:changeError}=await db.auth.updateUser({password:newPassword});
+  if(changeError)throw changeError;
+  form.reset();
+  status.textContent='Password baru berhasil disimpan di Supabase.';
+  await db.auth.signOut();
+  alert('Password berhasil diganti. Login kembali menggunakan nama kasir nisa dan password baru.');
+  location.reload();
+ }catch(err){
+  status.textContent='Gagal mengubah password: '+(err?.message||'silakan coba lagi.');
+ }finally{
+  button.disabled=false;
+  button.textContent='Ubah Password';
+ }
+});
 function renderAll(){$('today').textContent=new Date().toLocaleDateString('id-ID',{weekday:'long',day:'numeric',month:'long',year:'numeric'});renderProducts();renderCart();renderStock();renderSuppliers();renderPurchases();renderFinance();renderCustomers();renderDashboard();renderReport();renderSettings()}
 document.querySelectorAll('#nav button').forEach(b=>b.onclick=async()=>{document.querySelectorAll('#nav button').forEach(x=>x.classList.remove('active'));b.classList.add('active');document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));$(b.dataset.page).classList.add('active');$('pageTitle').textContent=b.textContent.replace(/^[^A-Za-zÀ-ÿ]+/,'').trim();await loadData(true)});
 (async()=>{let {data:{session}}=await db.auth.getSession();if(session?.user){currentUser=userFromEmail(session.user.email);if(currentUser)await showApp();else await db.auth.signOut()}})();
